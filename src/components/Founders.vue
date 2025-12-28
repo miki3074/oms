@@ -46,7 +46,7 @@ onUnmounted(() => {
       <div class="avatar-group">
         <img style="object-position: top;" src="../assets/dir.jpg"  class="avatar-img">
         <div>
-          <div class="person-name">имя фамилия</div>
+          <div class="person-name">Ильсур Исламов</div>
           <div class="person-role">генеральный директор </div>
         </div>
       </div>
