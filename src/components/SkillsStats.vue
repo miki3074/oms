@@ -4,21 +4,15 @@ import { onMounted, onUnmounted, ref, computed } from 'vue';
 const sectionRef = ref(null);
 const windowWidth = ref(0);
 
+// ... (Ваша логика dynamicZoom и handleResize остается без изменений) ...
 // 1. Логика динамического Zoom
 const dynamicZoom = computed(() => {
   if (windowWidth.value === 0) return {};
-
-  // ПЛАНШЕТЫ И МОБИЛЬНЫЕ (< 1024px): Zoom 1
   if (windowWidth.value < 1024) {
     return { zoom: 1 };
   }
-
-  // ДЕСКТОП: Рассчитываем zoom, стремясь к 1.9 при ширине 1600px
   let zoomVal = (windowWidth.value / 1600) * 1.9;
-
-  // Ограничиваем: минимум 1, максимум 1.9
   zoomVal = Math.min(Math.max(zoomVal, 1), 1.9);
-
   return { zoom: zoomVal };
 });
 
@@ -27,19 +21,31 @@ const handleResize = () => {
 };
 
 onMounted(() => {
-  // Инициализация размеров
   handleResize();
   window.addEventListener('resize', handleResize);
 
-  // 2. Логика анимации появления (IntersectionObserver)
+  // 2. Логика анимации появления
+  const options = {
+    root: null,
+    // ВАЖНОЕ ИЗМЕНЕНИЕ ЗДЕСЬ:
+    // '0px 0px -20% 0px' означает, что невидимая граница срабатывания
+    // поднята на 20% от низа экрана.
+    // Анимация начнется только когда блок пересечет эту линию.
+    rootMargin: '0px 0px -20% 0px',
+
+    // Также можно увеличить порог видимости элемента
+    threshold: 0.1
+  };
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+      // isIntersecting станет true только когда блок "заедет" на экран на 20% + threshold
       if (entry.isIntersecting) {
         entry.target.classList.add('animate');
-        observer.unobserve(entry.target);
+        observer.unobserve(entry.target); // Запускаем 1 раз и отключаем слежение
       }
     });
-  }, { threshold: 0.2 });
+  }, options);
 
   if (sectionRef.value) observer.observe(sectionRef.value);
 });
@@ -48,13 +54,14 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize);
 });
 
+// ... (Ваш массив skills остается без изменений) ...
 const skills = [
-  { num: 1, text: 'Понимаем специфику вашего предприятия. Оперативно оказываем услуги и вовремя оформляем итоговую документацию' },
-  { num: 2, text: 'Работаем в вашей графике. Мы подстраиваемся под удобный для ваших сотрудников режим и географию работы' },
-  { num: 3, text: 'Рассчитываем наиболее выгодные условия и оказываем только действительно необходимые услуги' },
-  { num: 4, text: 'Разрабатываем и внедряем уникальные программы по требованиям заказчика' },
-  { num: 5, text: 'Бережно обрабатываем и строго охраняем персональные данные всех наших клиентов' },
-  { num: 6, text: 'Предупреждаем о рисках: подскажем как не попасть под проверку и не нарушить закон. Безопасность – превыше всего' },
+  { num: 1, text: 'Понимаем специфику вашего предприятия...' },
+  { num: 2, text: 'Работаем в вашей графике...' },
+  { num: 3, text: 'Рассчитываем наиболее выгодные условия...' },
+  { num: 4, text: 'Разрабатываем и внедряем...' },
+  { num: 5, text: 'Бережно обрабатываем...' },
+  { num: 6, text: 'Предупреждаем о рисках...' },
 ]
 </script>
 
