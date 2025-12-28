@@ -67,7 +67,7 @@ const plans = [
   <section class="pricing-container" :style="dynamicZoom">
     <div class="pricing-header">
       <h2 class="section-title">СКОЛЬКО ЭТО СТОИТ</h2>
-      <div class="section-desc">
+      <div class="section-desc" style="text-indent: 17px;">
         Задача организации, в особенности же новая модель организационной деятельности <a href="#" class="link-blue">требует определения </a>. Задача организации, в особенности же социально-экономическое развитие напрямую зависит от системы обучения кадров, соответствующей насущным потребностям.
       </div>
     </div>

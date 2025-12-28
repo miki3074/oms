@@ -51,7 +51,7 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <div class="text-content">
+      <div class="text-content" style="text-indent: 27px;">
         Задача организации — <span class="highlight-blue">в особенности же новая модель</span>. организационной деятельности требует определения и уточнения ключевых компонентов планируемого обновления
       </div>
     </div>
@@ -59,7 +59,7 @@ onUnmounted(() => {
     <!-- Нижний блок (Анна) -->
     <div class="bottom-block">
       <div class="bottom-content-col">
-        <div class="banner-text">
+        <div class="banner-text" style="text-indent: 27px;">
           Задача организации, в особенности же новая модель организационной деятельности требует определения и уточнения ключевых компонентов планируемого обновления.
         </div>
 
@@ -89,7 +89,7 @@ onUnmounted(() => {
 }
 
 /* Сергей */
-.top-block { display: flex; gap: 40px; margin-bottom: 60px; align-items: flex-start; }
+.top-block { display: flex; gap: 24%; margin-bottom: 60px; align-items: flex-start; }
 .avatar-group { flex-shrink: 0; width: 150px; text-align: center; }
 .avatar-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; background-color: #eee; }
 .person-name { font-weight: 700; font-size: 0.9rem; text-transform: lowercase; margin-bottom: 2px; }
