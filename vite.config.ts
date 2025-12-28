@@ -28,7 +28,7 @@ export default defineConfig({
   server: {
     host: true,
     port: 5173,
-    allowedHosts: ['localhost', '.ngrok-free.app', /^.+$/],
+    allowedHosts: true,
     cors: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
