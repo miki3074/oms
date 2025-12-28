@@ -44,7 +44,7 @@ onUnmounted(() => {
     <!-- Верхний блок (Сергей) -->
     <div class="top-block">
       <div class="avatar-group">
-        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop" alt="Сергей Яшин" class="avatar-img">
+        <img style="object-position: top;" src="../assets/dir.jpg"  class="avatar-img">
         <div>
           <div class="person-name">имя фамилия</div>
           <div class="person-role">генеральный директор </div>
@@ -70,7 +70,7 @@ onUnmounted(() => {
       </div>
 
       <div class="bottom-image-col">
-        <img src="https://png.pngtree.com/png-vector/20230928/ourmid/pngtree-young-indian-woman-looking-at-camera-png-image_10149646.png" alt="Анна Яшина" class="anna-img">
+        <img src="" class="ann-img">
       </div>
     </div>
   </section>
